@@ -54,6 +54,7 @@ module.exports = function makeWebpackConfig() {
      */
     config.output = {
         path: root('dist'),
+        publicPath: isProd ? 'train-module' : 'http://localhost:8080/',
         filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
         chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
     };
