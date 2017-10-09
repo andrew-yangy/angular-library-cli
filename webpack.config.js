@@ -3,16 +3,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 const webpack = require('webpack');
 const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = {
     entry : {
-        'app': './src/demo/main.ts',
+        'app': ['./src/demo/main.ts'],
         'polyfills': './src/demo/polyfills.ts',
         'vendor': './src/demo/vendor.ts',
     },
     output: {
         path: path.join(process.cwd(),'dist'),
-        publicPath: 'http://localhost:8080/',
         filename: "js/[name].js"
     },
     resolve : {
@@ -69,6 +69,9 @@ module.exports = {
         new CommonsChunkPlugin({
             names: ['vendor', 'polyfills']
         }),
+        new ProgressBarPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
     ]
 };
 function root(args) {
