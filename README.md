@@ -15,6 +15,6 @@ ngl --help
 ```bash
 ngl new PROJECT-NAME
 cd PROJECT-NAME
-npm run serve-demo
+ngl serve
 ```
 Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
