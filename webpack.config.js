@@ -11,6 +11,7 @@ module.exports = {
         'polyfills': './src/demo/polyfills.ts',
         'vendor': './src/demo/vendor.ts',
     },
+    devtool: 'eval-source-map',
     output: {
         path: path.join(process.cwd(),'dist'),
         filename: "js/[name].js"
