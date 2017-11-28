@@ -12,7 +12,7 @@ program
     .action(name =>newCommand(name))
 program
     .command('serve')
-    .option('-p, --port', 'port')
+    .option('-p, --port <mode>', 'port')
     .description("'ngl serve' builds the library and runs demo in the web.")
-    .action(options => serveCommand(options))
+    .action(serveCommand)
 program.parse(process.argv);
