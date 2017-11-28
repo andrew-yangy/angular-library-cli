@@ -13,7 +13,7 @@ module.exports = {
     },
     devtool: 'eval-source-map',
     output: {
-        path: path.join(process.cwd(),'dist'),
+        path: path.resolve(process.cwd(),'dist'),
         filename: "js/[name].js"
     },
     resolve : {
@@ -26,13 +26,13 @@ module.exports = {
         ]
     },
     resolveLoader: {
-        modules: [path.join(__dirname, 'node_modules')]
+        modules: [path.resolve(__dirname, 'node_modules')]
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
-                loaders: ['awesome-typescript-loader?configFileName=./src/demo/tsconfig.json', 'angular2-template-loader'],
+                loaders: ['awesome-typescript-loader?configFileName=./src/demo/tsconfig.json', 'angular2-template-loader','angular-router-loader'],
                 exclude: [/\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/],
             },
 
@@ -60,8 +60,8 @@ module.exports = {
     },
     plugins: [
         new webpack.ContextReplacementPlugin(
-            /angular(\\|\/)core(\\|\/)@angular/,
-            path.join(process.cwd(),'./src/demo/')
+            /\@angular(\\|\/)core(\\|\/)esm5/,
+            path.resolve(__dirname, './src')
         ),
         new HtmlWebpackPlugin({
             template: './src/demo/index.html',
